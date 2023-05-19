@@ -1,42 +1,41 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Registro
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div id="container">
+    <h1>Registro</h1> <!-- Agrega la palabra "Registro" como título -->
+    <div id="content-wrapper">
+      <ion-list class="list-formulario">
+        <ion-item>
+          <ion-input type="text" placeholder="Cédula" [(ngModel)]="newPersona.cedula"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="text" placeholder="Nombre" [(ngModel)]="newPersona.nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="text" placeholder="Apellido" [(ngModel)]="newPersona.apellido"></ion-input>
+        </ion-item>
+      </ion-list>
+  
+      <div id="food-container">
+        <img src="https://www.recetasnestle.com.ec/sites/default/files/styles/recipe_detail_desktop/public/srh_recipes/4e4293857c03d819e4ae51de1e86d66a.webp?itok=A5BBV75V" alt="Imagen 1">
+        <img src="https://www.recetasnestle.com.ec/sites/default/files/srh_recipes/0e6d2f1d32c02301139758e2f35d3b18.jpg" alt="Imagen 2">
+        <!-- Agrega aquí más etiquetas de <img> para tus imágenes de comida -->
+      </div>
+    </div>
+  </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Registro</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-<ion-list class="list-formulario">
-  <ion-item>
-    <ion-input type="text" placeholder="Cedula" [(ngModel)]="newPersona.cedula"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input type="text" placeholder="Nombre" [(ngModel)]="newPersona.nombre"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input type="text" placeholder="Apellido" [(ngModel)]="newPersona.apellido"></ion-input>
-  </ion-item>
+  <ion-list>
+    <ion-item *ngFor="let p of Personas">
+      <ion-label>{{p.cedula}}</ion-label>
+      <ion-label>{{p.nombre}}</ion-label>
+      <ion-label>{{p.apellido}}</ion-label>
+      <ion-button (click)="delete(p)" color="danger" slot="end">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
   </ion-list>
-<ion-list>
-  <ion-item *ngFor="let p of Personas" >
-    <ion-label>{{p.cedula}}</ion-label>
-    <ion-label>{{p.nombre}}</ion-label>
-    <ion-label>{{p.apellido}}</ion-label>
-    <ion-button (click)="delete(p)" color="danger" >
-      <ion-icon slot="icon-only" name="close-circle-outline" ></ion-icon>
-    </ion-button>
-  </ion-item>
-</ion-list>
-<ion-fab vertical="bottom" horizontal="end" >
-<ion-fab-button (click)="save()" size="small" color="success">
-  <ion-icon name="add-circle-outline"></ion-icon>
-</ion-fab-button>
-</ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="save()" size="small" color="success">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
